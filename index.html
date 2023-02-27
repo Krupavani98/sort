@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <script type="text/javascript">
+
+     var city=["Hyderabad","Warangal","Chennai","Mumbai","Banglore","Ranchi","Delhi","Patna","Nizambad","Guntur"];
+     function loadcity(){
+     for(var item of city)
+     {
+        var li=document.createElement("li");
+        li.innerHTML=item;
+        document.querySelector("ol").appendChild(li);
+     }
+    }
+    function bodyload(){
+        loadcity();
+    }
+    function buttonclick(){
+       document.querySelector("ol").innerHTML="";
+       var icon=document.getElementById("icon");
+       icon.className = (icon.className=="bi bi-sort-alpha-down")?"bi bi-sort-alpha-up":"bi bi-sort-alpha-down";
+      var result=document.getElementById("result")
+      result .res = (icon.className=="bi bi-sort-alpha-down")?"Ascending Order":"Descending Order";
+      if(icon.className=="bi bi-sort-alpha-down")
+       {
+        city.sort();
+        loadcity();
+       }
+       else{
+        city.sort();
+        city.reverse();
+        loadcity();
+       }
+    }
+    </script>
+</head>
+<body onload="bodyload()">
+    <div class="container-fluid mt-5 bg-dark text-white" style="width:250px"> 
+            <div class="ms-5 text-warning" >
+               Sorting Elements <br><br>
+          </div>
+        <ol></ol>
+    <br>
+    <div>
+    <button class="btn btn-warning mb-2" style="width:220px"> 
+        <span class="bi bi-sort-alpha-down" id="icon" onclick="buttonclick()"></span>
+    </button>
+    </div>
+    <p id="result"></p>
+    </div>
+    
+</body>
+</html>
